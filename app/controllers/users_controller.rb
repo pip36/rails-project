@@ -4,11 +4,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def destroy
+
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Hi #{@user.name}, welcome to the sample app!"
       redirect_to @user
+      log_in(@user)
     else
       render 'new'
     end
@@ -16,6 +21,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def index
+    @users = User.all
   end
 
   private
