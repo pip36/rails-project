@@ -13,6 +13,9 @@ gem 'rails', '~> 5.0.1'
 gem 'bcrypt', '3.1.11'
 
 gem 'faker', '1.6.6'
+gem 'carrierwave', '~> 0.11.2'
+gem 'mini_magick', '~> 4.6', '>= 4.6.1'
+gem 'fog', '~> 1.38'
 
 gem 'bootstrap-sass'
 # Use Puma as the app server

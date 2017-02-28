@@ -8,6 +8,7 @@ class User < ApplicationRecord
   uniqueness: {case_sensitive: false}
   validates :password, presence: true, length: {minimum: 6}
   has_secure_password
+  has_many :microposts, dependent: :destroy
 
   def self.digest(string)
      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -46,6 +47,10 @@ end
 
 def password_reset_expired?
   reset_sent_at < 2.hours.ago
+end
+
+def feed
+  Micropost.where("user_id = ?", id)
 end
 
 private
