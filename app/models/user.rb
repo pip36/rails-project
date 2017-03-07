@@ -9,8 +9,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6}
   has_secure_password
   has_many :microposts, dependent: :destroy
-  has_many :active_relationships, class_name: 'Relationship'
-                                  foreign_key: 'follower_id'
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: 'follower_id',
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
 
